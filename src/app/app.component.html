@@ -1,1 +1,59 @@
-  <p>{{employee|json}}</p>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Employee Id</th>
+            <th>Employee Name</th>
+            <th>Employee Salary</th>
+            <th>Employee Email</th>
+            <th>Employee Age</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let emp of employee ; let i = index">
+        <td>{{emp.empId}}</td>
+        <td>{{emp.empName}}</td>
+        <td>{{emp.empSalary}}</td>
+        <td>{{emp.empEmail}}</td>
+        <td>{{emp.empAge}}</td>
+        <td><button (click)="edit(emp)">Edit</button></td>
+        <td><button (click)="delete(i)">Delete</button></td>
+    </tr>
+</table>
+<br>
+<br>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Employee Id</th>
+            <th>Employee Name</th>
+            <th>Employee Salary</th>
+            <th>Employee Email</th>
+            <th>Employee Age</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tr>
+        <td><input *ngIf="isUpdate" type="text" placeholder="Employee Id" [(ngModel)]="editEmployee.empId">
+            <input *ngIf="!isUpdate" type="text" placeholder="Employee Id" [(ngModel)]="addEmployee.empId">
+        </td>
+        <td><input *ngIf="isUpdate" type="text" placeholder="Employee Name" [(ngModel)]="editEmployee.empName">
+            <input *ngIf="!isUpdate" type="text" placeholder="Employee Name" [(ngModel)]="addEmployee.empName">
+        </td>
+        <td><input *ngIf="isUpdate" type="text" placeholder="Employee Salary" [(ngModel)]="editEmployee.empSalary">
+            <input *ngIf="!isUpdate" type="text" placeholder="Employee Salary" [(ngModel)]="addEmployee.empSalary">
+        </td>
+        <td><input *ngIf="isUpdate" type="text" placeholder="Employee Email" [(ngModel)]="editEmployee.empEmail">
+            <input *ngIf="!isUpdate" type="text" placeholder="Employee Email" [(ngModel)]="addEmployee.empEmail">
+        </td>
+        <td><input *ngIf="isUpdate" type="text" placeholder="Employee Age" [(ngModel)]="editEmployee.empAge">
+            <input *ngIf="!isUpdate" type="text" placeholder="Employee Age" [(ngModel)]="addEmployee.empAge">
+        </td>
+        <td>
+            <button (click)="add(addEmployee)" *ngIf="!isUpdate">Add</button>
+            <button (click)="update(editEmployee,editEmployee.empId)" *ngIf="isUpdate">Update</button>
+        </td>
+
+    </tr>
+</table>
+
+<p>{{employee|json}}</p>
